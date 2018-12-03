@@ -1,0 +1,193 @@
+/*********************
+VARIABLES
+*********************/
+
+//Colors for the Application
+$primary: #369eff;
+$white: #ffffff;
+$background: #f1f2f5;
+$shadow-red: #f74412;
+$shadow-blue: #578efc;
+
+//Breakpoints for Responsive Design
+
+$breakpoint-1: 1240px;
+$breakpoint-2: 768px;
+$breakpoint-3: 400px;
+
+/*********************
+MIXINS
+*********************/
+
+@mixin action-element() {
+  border: 0;
+  margin: 10px;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  background: $white;
+}
+
+@mixin breakpoint($point) {
+  @if $point == large {
+    @media (min-width: $breakpoint-1) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (min-width: $breakpoint-2) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (min-width: $breakpoint-3) {
+      @content;
+    }
+  }
+}
+
+/*********************
+SELECTORS
+*********************/
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', 'sans-serif';
+  background: $background;
+  font-size: 12px;
+  @include breakpoint(medium) {
+    font-size: 14px;
+  }
+  @include breakpoint(large) {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  padding: 15px;
+
+  #search-section {
+    margin-bottom: 20px;
+
+    button {
+      @include action-element();
+      cursor: pointer;
+      box-shadow: 1px 1px 1px $primary;
+    }
+
+    #search-apply {
+      color: $primary;
+      font-weight: bold;
+      background: rgba(54, 158, 255, 0.3);
+      box-shadow: 2px 2px 2px #000;
+    }
+
+    input {
+      @include action-element();
+      width: calc(70% - 20px);
+      @include breakpoint(medium) {
+        width: 50%;
+      }
+      @include breakpoint(large) {
+        width: 50%;
+      }
+
+      &:hover,
+      &:focus {
+        box-shadow: 3px 4px 10px $shadow-blue;
+      }
+    }
+  }
+
+  #result-count {
+    margin: 10px;
+  }
+
+  #remove-box-text {
+    color: $shadow-red;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  #content-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .content-box {
+      width: calc(100% / 3 - 44px);
+      padding: 10px;
+      height: 400px;
+      background: $white;
+      box-shadow: 2px 2px 2px $background;
+      margin: 10px;
+      cursor: pointer;
+      @include breakpoint(medium) {
+        width: calc(100% / 4 - 44px);
+      }
+      @include breakpoint(large) {
+        width: calc(100% / 5 - 44px);
+      }
+
+      &:hover {
+        opacity: 0.4;
+      }
+
+      figure {
+        margin: 0;
+        margin-bottom: 10px;
+        height: 200px;
+
+        .movie-poster {
+          width: 100%;
+          height: 150px;
+          @include breakpoint(medium) {
+            height: 200px;
+          }
+          @include breakpoint(large) {
+            height: 200px;
+          }
+        }
+      }
+
+      .year-text {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+header {
+  background: $primary;
+  color: $white;
+  display: flex;
+  padding: 0 20px;
+  justify-content: flex-end;
+  align-items: center;
+
+  .logo {
+    margin-right: auto;
+  }
+
+  #add-movie-button {
+    padding: 10px;
+    background: white;
+    border: 0;
+    color: #369eff;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+  }
+}
+
+/*********************
+COMMONS
+*********************/
+
+.float-right {
+  float: right;
+}

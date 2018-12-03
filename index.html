@@ -1,0 +1,47 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <title>Movies Listing</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="public/logo-mediaNet.png" height="100" />
+      <button id="add-movie-button">&#43; Add a Movie</button>
+    </header>
+    <main id="main">
+      <section id="search-section">
+        <input
+          type="search"
+          placeholder="Search by Title of the Movie"
+          id="search-input"
+        />
+        <button id="search-apply">SEARCH</button>
+        <button id="sort-title" class="title-sort-button float-right">
+          Sort By Title
+        </button>
+        <button id="sort-year" class="year-sort-button float-right">
+          Sort By Year
+        </button>
+      </section>
+      <h4 id="result-count">Showing All Results</h4>
+      <div>
+        <p id="remove-box-text" align="right">
+          *Click on Movie Box to delete it from the List
+        </p>
+      </div>
+      <section id="content-section"></section>
+    </main>
+    <footer></footer>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
