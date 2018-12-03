@@ -31,32 +31,26 @@ var Application = Object.assign(Object.create(UI), {
     searchMovies();
   }),
   sortByTitle: getElements.sortTitle.addEventListener('click', () => {
-    let newArray = movieList;
-    for (var i = 0; i < newArray.length - 1; i++) {
-      for (var j = i + 1; j < newArray.length; j++) {
-        if (newArray[i].title > newArray[j].title) {
-          let tmp = newArray[i];
-          (newArray[i] = newArray[j]), (newArray[j] = tmp);
-        }
-      }
-    }
-    movieList = newArray;
-    initialize();
+    sort(movieList, 'title');
   }),
   sortByYear: getElements.sortYear.addEventListener('click', () => {
-    let newArray = movieList;
-    for (var i = 0; i < newArray.length - 1; i++) {
-      for (var j = i + 1; j < newArray.length; j++) {
-        if (newArray[i].year > newArray[j].year) {
-          let tmp = newArray[i];
-          (newArray[i] = newArray[j]), (newArray[j] = tmp);
-        }
-      }
-    }
-    movieList = newArray;
-    initialize();
+    sort(movieList, 'year');
   })
 });
+
+function sort(array, key) {
+  let newArray = array;
+  for (var i = 0; i < newArray.length - 1; i++) {
+    for (var j = i + 1; j < newArray.length; j++) {
+      if (newArray[i][key] > newArray[j][key]) {
+        let tmp = newArray[i];
+        (newArray[i] = newArray[j]), (newArray[j] = tmp);
+      }
+    }
+  }
+  movieList = newArray;
+  initialize();
+}
 
 function searchMovies() {
   count = 0;
