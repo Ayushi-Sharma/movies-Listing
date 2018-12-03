@@ -15,7 +15,7 @@ var getElements = {
 var UI = {
   init: () => {
     for (let i = 0; i < movieList.length; i++) {
-      new Block(movieList[i], i);
+      new Block(movieList, movieList[i], i);
     }
   }
 };
@@ -60,10 +60,12 @@ function searchMovies() {
       value = getElements.searchInput.value.toLowerCase();
 
     var result = title.includes(value);
-    elements[i].style.display = result ? 'inline-block' : 'none';
     if (result) {
       count += 1;
     }
+    elements[i]
+      ? (elements[i].style.display = result ? 'inline-block' : 'none')
+      : (count = 0);
   }
   if (count) {
     getElements.resultCount.innerHTML =
@@ -84,7 +86,7 @@ function addMovie() {
     poster:
       'https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg'
   };
-  new Block(list, movieList.length);
+  new Block(movieList, list, movieList.length);
   data.push(list);
   title && year ? alert('Movie successfully added') : '';
   getElements.resultCount.innerHTML = 'Showing ' + (count + 1) + ' Results!';

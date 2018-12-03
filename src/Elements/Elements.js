@@ -3,7 +3,7 @@ import totalMovieList from '../../public/data';
 var count = totalMovieList.length;
 
 export default class Block {
-  constructor(data, index) {
+  constructor(movieList, data, index) {
     this.elm = document.createElement('div');
     this.elm.setAttribute('class', 'content-box');
     this.elm.addEventListener('click', evt => {
